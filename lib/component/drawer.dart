@@ -2,34 +2,12 @@ import 'package:bof_restaurants/screen/export_page.dart';
 import 'package:bof_restaurants/screen/home_page.dart';
 import 'package:bof_restaurants/screen/menu_page.dart';
 import 'package:bof_restaurants/screen/setting_page.dart';
+import 'package:bof_restaurants/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 
 class DrawerMenu extends StatelessWidget {
   const DrawerMenu({super.key});
-
-  void _navigateToNewPage(BuildContext context, Type pageType) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => _buildPage(context, pageType)),
-    );
-  }
-
-  Widget _buildPage(BuildContext context, Type pageType) {
-    switch (pageType) {
-      case const (MenuPage):
-        return const MenuPage();
-      case const (SettingPage):
-        return const SettingPage();
-      case const (ExportPage):
-        return const ExportPage();
-      case const (HomePage):
-        return const HomePage(title: '',); // Navigate to OtherPage (example)
-      // Add more cases for other page types as needed
-      default:
-        throw ArgumentError('Invalid page type: $pageType');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,28 +45,28 @@ class DrawerMenu extends StatelessWidget {
           ListTile(
             title: const Text('Table'),
             onTap: () {
-              _navigateToNewPage(context, HomePage);
+              navigateToNewPage(context, HomePage);
               // Handle tap for Item 1
             },
           ),
           ListTile(
             title: const Text('Menu'),
             onTap: () {
-              _navigateToNewPage(context, MenuPage);
+              navigateToNewPage(context, MenuPage);
               // Handle tap for Item 1
             },
           ),
           ListTile(
             title: const Text('Export'),
             onTap: () {
-              _navigateToNewPage(context, ExportPage);
+              navigateToNewPage(context, ExportPage);
               // Handle tap for Item 2
             },
           ),
           ListTile(
             title: const Text('Setting'),
             onTap: () {
-              _navigateToNewPage(context, SettingPage);
+              navigateToNewPage(context, SettingPage);
               // Handle tap for Item 2
             },
           ),
